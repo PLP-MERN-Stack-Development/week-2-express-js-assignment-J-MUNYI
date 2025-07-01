@@ -1,63 +1,154 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19868738&assignment_repo_type=AssignmentRepo)
-# Express.js RESTful API Assignment
+# 🧠 Express.js API Assignment
 
-This assignment focuses on building a RESTful API using Express.js, implementing proper routing, middleware, and error handling.
+This project is a RESTful API built with **Node.js** and **Express.js**.  
+It manages a list of products and supports features like filtering, pagination, authentication, validation, search, and error handling.
 
-## Assignment Overview
+---
 
-You will:
-1. Set up an Express.js server
-2. Create RESTful API routes for a product resource
-3. Implement custom middleware for logging, authentication, and validation
-4. Add comprehensive error handling
-5. Develop advanced features like filtering, pagination, and search
+## How to Run the Project
 
-## Getting Started
+### 1. Clone the Repository
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install dependencies:
-   ```
-   npm install
-   ```
-4. Run the server:
-   ```
-   npm start
-   ```
+```bash
+git clone https://github.com/J-MUNYI/WEEK-2-EXPRESS-JS-ASSIGNMENT.git
+cd J-MUNYI/WEEK-2-EXPRESS-JS-ASSIGNMENT
+2. Install Dependencies
+bash
+Copy
+Edit
+npm install
+3. Set Up Environment Variables
+Create a .env file in the root folder. Use .env.example as reference:
 
-## Files Included
+ini
+Copy
+Edit
+PORT=3000
+API_KEY=54321
+4. Start the Server
+bash
+Copy
+Edit
+node index.js
+Server will run on:
 
-- `Week2-Assignment.md`: Detailed assignment instructions
-- `server.js`: Starter Express.js server file
-- `.env.example`: Example environment variables file
+arduino
+Copy
+Edit
+http://localhost:3000
+ API Endpoints Documentation
+ GET /api/products
+List all products, with optional filtering and pagination.
 
-## Requirements
+Query Parameters:
 
-- Node.js (v18 or higher)
-- npm or yarn
-- Postman, Insomnia, or curl for API testing
+category – filter by product category (optional)
 
-## API Endpoints
+page – page number (optional)
 
-The API will have the following endpoints:
+limit – number of results per page (optional)
 
-- `GET /api/products`: Get all products
-- `GET /api/products/:id`: Get a specific product
-- `POST /api/products`: Create a new product
-- `PUT /api/products/:id`: Update a product
-- `DELETE /api/products/:id`: Delete a product
+Example:
 
-## Submission
+http
+Copy
+Edit
+GET /api/products?category=Electronics&page=1&limit=5
+    GET /api/products/:id
+Fetch a single product by ID.
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+http
+Copy
+Edit
+GET /api/products/2
+    POST /api/products
+Create a new product.
 
-1. Complete all the required API endpoints
-2. Implement the middleware and error handling
-3. Document your API in the README.md
-4. Include examples of requests and responses
+Headers:
 
-## Resources
+makefile
+Copy
+Edit
+x-api-key: 54321
+Request Body:
 
-- [Express.js Documentation](https://expressjs.com/)
-- [RESTful API Design Best Practices](https://restfulapi.net/)
-- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) 
+json
+Copy
+Edit
+{
+  "name": "Moringa Oil",
+  "description": "Organic hair and skin oil",
+  "price": 200,
+  "category": "Health and Beauty",
+  "inStock": true
+}
+     PUT /api/products/:id
+Update an existing product by ID.
+
+Headers:
+
+makefile
+Copy
+Edit
+x-api-key: 54321
+Request Body: (Same format as POST)
+
+    DELETE /api/products/:id
+Delete a product by ID.
+
+Headers:
+
+makefile
+Copy
+Edit
+x-api-key: 54321
+     GET /api/products/search
+Search for products by name.
+
+http
+Copy
+Edit
+GET /api/products/search?name=oil
+      GET /api/products/stats
+Returns total products and count by category.
+
+http
+Copy
+Edit
+GET /api/products/stats
+Middleware Used
+Logger – logs request method, URL, and timestamp
+
+Authentication – checks x-api-key header
+
+Validation – ensures correct data types and required fields for product creation/update
+
+404 Handler – responds to unknown routes
+
+Global Error Handler – catches and formats all thrown errors
+
+Tech Stack
+Node.js
+
+Express.js
+
+Environment Variables
+Create a .env file using the format below:
+
+env
+Copy
+Edit
+PORT=3000
+API_KEY=54321
+You can find an example in the .env.example file.
+
+File Structure
+Since this is a simple project, all logic is inside index.js:
+
+pgsql
+Copy
+Edit
+├── index.js
+├── package.json
+├── .env.example
+├── README.md
